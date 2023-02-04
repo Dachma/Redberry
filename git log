@@ -1,0 +1,23 @@
+[33mcommit d8a0c2e7f494f4f840bfeaf263d31c6027b65148[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Dachi Kvirikadze <dachikvirikadze01@gmail.com>
+Date:   Fri Feb 3 20:19:13 2023 +0400
+
+    finished landing page
+
+[33mcommit 917aae4871d7c16afef146192f498c7f91a1a6a5[m
+Author: Dachi Kvirikadze <dachikvirikadze01@gmail.com>
+Date:   Fri Feb 3 19:32:04 2023 +0400
+
+    added BrowserRouter and created landingPage.js
+
+[33mcommit 82784e97a2f813f6c7be71073ec0d9d18a79192a[m
+Author: Dachi Kvirikadze <dachikvirikadze01@gmail.com>
+Date:   Fri Feb 3 19:25:23 2023 +0400
+
+    created index.js and app.js files
+
+[33mcommit 55849b6e178570bd89e7981106159849f899ce8d[m
+Author: Dachi Kvirikadze <dachikvirikadze01@gmail.com>
+Date:   Fri Feb 3 19:20:01 2023 +0400
+
+    initialized git
