@@ -215,13 +215,11 @@
     align-items: center;
     padding: 10px 10px 12px;
     gap: 10px;
-
     position: absolute;
     width: 107px;
     height: 27px;
     left: 401px;
     top: 325px;
-
     background: #0E80BF;
     border-radius: 4px;
     border: none;
@@ -271,8 +269,12 @@
     color: #000000;
 }
 
+.error {
+    color: #E52F2F;
+}
+
 .about-me-input {
-    padding-bottom: 54.5px;
+    padding-top: 13px;
     padding-left: 16px;
     box-sizing: border-box;
     width: 798px;
@@ -286,6 +288,7 @@
     line-height: 22px;
     text-transform: lowercase;
     color: #000000;
+    resize: none;
 }
 
 .about-me-input::placeholder {
@@ -298,10 +301,83 @@
     width: 846px;
 }
 
+.email-input, .mobile-input {
+    width: 798px;
+}
+
 .email {
     top: 558px;
 }
 
 .mobile {
     top: 693px;
+}
+
+.to-experience {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 60px;
+    gap: 20px;
+    position: absolute;
+    width: 151px;
+    height: 48px;
+    right: 972px;
+    bottom: 65px;
+    background: #6B40E3;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.to-experience-txt {
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.08em;
+    color: #FFFFFF;
+}
+
+.right-name, .right-lastname {
+    position: absolute;
+    width: 123px;
+    height: 42px;
+    left: 80px;
+    top: 68px;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 42px;
+    color: #F93B1D;
+}
+
+.right-lastname {
+    width: 145px;
+    left: 223px;
+}
+
+.correct {
+    position: absolute;
+    top: 52.5px;
+    right: 80px;
+}
+
+.wrong {
+    position: absolute;
+    top: 47.5px;
+    right: 40px;
+}
+
+#image {
+    position: absolute;
+    width: 246px;
+    height: 246px;
+    left: 501px;
+    top: 48px;
+    display: none;
+    border-radius: 50%;
 }

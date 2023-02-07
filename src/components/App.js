@@ -8,11 +8,58 @@ const initialState = {
     name: "",
     lastName: "",
     email: "",
-    mobile: ""
+    mobile: "",
+    photo: "",
+    aboutMe: ""
 }
 
 class App extends React.Component {
     state = initialState
+
+    UNSAFE_componentWillMount() {
+        let name = JSON.parse(window.sessionStorage.getItem('name'));
+        let lastName = JSON.parse(window.sessionStorage.getItem('lastName'));
+        let email = JSON.parse(window.sessionStorage.getItem('email'));
+        let mobile = JSON.parse(window.sessionStorage.getItem('mobile'));
+        let aboutMe = JSON.parse(window.sessionStorage.getItem('aboutMe'));
+        let photo = JSON.parse(window.sessionStorage.getItem('photo'));
+        if(sessionStorage.length === 0) {
+          this.setState({
+            initialState
+          })
+        }
+        this.setState({
+          name,
+          lastName,
+          email,
+          mobile,
+          aboutMe,
+          photo
+        })
+      }
+    
+      componentDidUpdate(_prevProps, prevState) {
+        if(this.state.name !== prevState.name) {
+          window.sessionStorage.setItem('name', JSON.stringify(this.state.name))
+        }
+        if(this.state.lastName !== prevState.lastName) {
+          window.sessionStorage.setItem('lastName', JSON.stringify(this.state.lastName))
+        }
+        if(this.state.email !== prevState.email) {
+          window.sessionStorage.setItem('email', JSON.stringify(this.state.email))
+        }
+        if(this.state.mobile !== prevState.mobile) {
+          window.sessionStorage.setItem('mobile', JSON.stringify(this.state.mobile))
+        }
+        if(this.state.aboutMe !== prevState.aboutMe) {
+          window.sessionStorage.setItem('aboutMe', JSON.stringify(this.state.aboutMe))
+        }
+        if(this.state.photo !== prevState.photo) {
+          window.sessionStorage.setItem('photo', JSON.stringify(this.state.photo))
+        }
+      }
+
+
     render() { 
         const saveData = (value, className) => {
             if (className === 'input-name-input') {
@@ -23,21 +70,12 @@ class App extends React.Component {
               this.setState({ email: value })
             } else if(className === 'mobile-input') {
               this.setState({ mobile: value })
+            } else if(className === 'image') {
+              this.setState({ photo: value })
+            } else if(className === 'about-me-input') {
+              this.setState({ aboutMe: value })
             }
-            // } else if(className === 'input-laptopname-input') {
-            //   this.setState({ laptopName: value })
-            // } else if(className === 'cpu-birtvi-input') {
-            //   this.setState({ CPUbirtvi: value })
-            // } else if(className === 'cpu-nakadi-input') {
-            //   this.setState({ CPUnakadi: value })
-            // } else if(className === 'input-laptopRAM-input') {
-            //   this.setState({ laptopRAM: value })
-            // } else if(className === 'input-laptopPrice-input') {
-            //   this.setState({ laptopPrice: value })
-            // }
         }
-
-
         return (
             <div>
                 <BrowserRouter>
@@ -50,6 +88,8 @@ class App extends React.Component {
                                 lastName={this.state.lastName}
                                 email={this.state.email}
                                 mobile={this.state.mobile}
+                                photo={this.state.photo}
+                                aboutMe={this.state.aboutMe}
                             />
                         }/>
                     </Routes>
