@@ -20,7 +20,6 @@ class Info extends React.Component {
         inputFile.addEventListener('change', () => {
             const reader = new FileReader();
             reader.addEventListener('load', () => {
-                // image.src = reader.result;
                 image.style.display = 'block';
                 this.props.saveData(reader.result, 'image')
             });
@@ -99,6 +98,7 @@ class Info extends React.Component {
         return false;
       }
 
+      // check validation and submit
       handleSubmit = e => {
         const valid = this.validate();
         if(!valid) {
@@ -109,6 +109,7 @@ class Info extends React.Component {
 
 
     render() { 
+        console.log(this.props.name)
         const sendData = e => {
             this.props.saveData(e.target.value, e.target.className);
         }
@@ -117,7 +118,7 @@ class Info extends React.Component {
             <div className='info-page'>
                 <div className='info-left'>
                     <Link to="/">
-                        <button className="go-back"><img src={goBack} alt="back page"/></button>
+                        <button onClick={this.props.clearStorage} className="go-back"><img src={goBack} alt="back page"/></button>
                     </Link>
                     <div className='personal-info-txt'>პირადი ინფო</div>
                     <div className='info-hr'/>

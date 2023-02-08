@@ -3,19 +3,21 @@ import '../App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import Info from './Info';
+import Experience from './Experience';
 
-const initialState = {
-    name: "",
-    lastName: "",
-    email: "",
-    mobile: "",
-    photo: "",
-    aboutMe: ""
-}
 
 class App extends React.Component {
-    state = initialState
+    state = {
+        name: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+        photo: "",
+        aboutMe: ""
+    }
+    initialState = this.state
 
+    // save info on refresh
     UNSAFE_componentWillMount() {
         let name = JSON.parse(window.sessionStorage.getItem('name'));
         let lastName = JSON.parse(window.sessionStorage.getItem('lastName'));
@@ -23,11 +25,6 @@ class App extends React.Component {
         let mobile = JSON.parse(window.sessionStorage.getItem('mobile'));
         let aboutMe = JSON.parse(window.sessionStorage.getItem('aboutMe'));
         let photo = JSON.parse(window.sessionStorage.getItem('photo'));
-        if(sessionStorage.length === 0) {
-          this.setState({
-            initialState
-          })
-        }
         this.setState({
           name,
           lastName,
@@ -38,6 +35,7 @@ class App extends React.Component {
         })
       }
     
+      // save information in session storage
       componentDidUpdate(_prevProps, prevState) {
         if(this.state.name !== prevState.name) {
           window.sessionStorage.setItem('name', JSON.stringify(this.state.name))
@@ -59,8 +57,13 @@ class App extends React.Component {
         }
       }
 
+    clearStorage = () => {
+        sessionStorage.clear();
+        this.setState(this.initialState)
+    }
 
     render() { 
+        // get data from user
         const saveData = (value, className) => {
             if (className === 'input-name-input') {
               this.setState({ name: value })
@@ -80,7 +83,7 @@ class App extends React.Component {
             <div>
                 <BrowserRouter>
                     <Routes>
-                        <Route path='/' exact element={<LandingPage/>}/>
+                        <Route path='/' exact element={<LandingPage />}/>
                         <Route path='/info' element={
                             <Info
                                 saveData={saveData}
@@ -90,6 +93,12 @@ class App extends React.Component {
                                 mobile={this.state.mobile}
                                 photo={this.state.photo}
                                 aboutMe={this.state.aboutMe}
+                                clearStorage={this.clearStorage}
+                            />
+                        }/>
+                        <Route path='/experience' element={
+                            <Experience 
+                                clearStorage={this.clearStorage}
                             />
                         }/>
                     </Routes>
